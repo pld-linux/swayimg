@@ -1,11 +1,11 @@
 Summary:	Image viewer for Wayland
 Name:		swayimg
-Version:	4.5
+Version:	4.6
 Release:	1
 License:	MIT
 Group:		Applications
 Source0:	https://github.com/artemsen/swayimg/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	7ec1fb47687a0d4caf084be580a87df1
+# Source0-md5:	c8c51c86fdfb474fa5ba9f540366d178
 URL:		https://github.com/artemsen/swayimg
 BuildRequires:	OpenEXR-devel >= 3.1
 BuildRequires:	bash-completion-devel
