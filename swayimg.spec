@@ -1,7 +1,7 @@
 Summary:	Image viewer for Wayland
 Name:		swayimg
 Version:	4.6
-Release:	1
+Release:	2
 License:	MIT
 Group:		Applications
 Source0:	https://github.com/artemsen/swayimg/archive/v%{version}/%{name}-%{version}.tar.gz
