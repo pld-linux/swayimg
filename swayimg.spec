@@ -1,21 +1,20 @@
 Summary:	Image viewer for Wayland
 Name:		swayimg
-Version:	4.7
+Version:	5.0
 Release:	1
 License:	MIT
 Group:		Applications
 Source0:	https://github.com/artemsen/swayimg/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	93ce2481297f69cac716203afe6e9c9a
+# Source0-md5:	c8eb3374c1d640a4970bd4c49a59737a
 URL:		https://github.com/artemsen/swayimg
-BuildRequires:	OpenEXR-devel >= 3.1
+BuildRequires:	OpenEXR-devel >= 3.4
 BuildRequires:	bash-completion-devel
+BuildRequires:	exiv2-devel
 BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel >= 2
 BuildRequires:	giflib-devel
-BuildRequires:	json-c-devel
 BuildRequires:	libdrm-devel
-BuildRequires:	libavif-devel
-BuildRequires:	libexif-devel
+BuildRequires:	libavif-devel >= 1.0
 BuildRequires:	libheif-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libjxl-devel
@@ -23,20 +22,24 @@ BuildRequires:	libpng-devel
 BuildRequires:	libraw-devel
 BuildRequires:	librsvg-devel >= 2.46
 BuildRequires:	libsixel-devel
+BuildRequires:	libstdc++-devel >= 6:8
 BuildRequires:	libtiff-devel >= 4
 BuildRequires:	libwebp-devel
-BuildRequires:	meson >= 0.60.0
+BuildRequires:	luajit-devel
+BuildRequires:	meson >= 1.1
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
+BuildRequires:	python3
+BuildRequires:	python3-modules
 BuildRequires:	rpmbuild(macros) >= 2.042
-BuildRequires:	scdoc
 BuildRequires:	wayland-devel
 BuildRequires:	wayland-protocols >= 1.35
 BuildRequires:	xorg-lib-libxkbcommon-devel
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	OpenEXR >= 3.1
+Requires:	OpenEXR >= 3.4
 Requires:	hicolor-icon-theme
+Requires:	libavif >= 1.0
 Requires:	librsvg >= 2.46
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -49,6 +52,8 @@ display servers.
 
 %build
 %meson \
+	-Ddoc=false \
+	-Dlicense=false \
 	-Dversion=%{version} \
 	-Dzsh=enabled
 %meson_build
@@ -70,13 +75,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc LICENSE README.md
+%doc CONFIG.md LICENSE README.md USAGE.md
 %attr(755,root,root) %{_bindir}/swayimg
 %dir %{_datadir}/swayimg
-%{_datadir}/swayimg/swayimgrc
+%{_datadir}/swayimg/example.lua
+%{_datadir}/swayimg/swayimg.lua
 %{_desktopdir}/swayimg.desktop
 %{_iconsdir}/hicolor/*x*/apps/swayimg.png
 %{_mandir}/man1/swayimg.1*
-%{_mandir}/man5/swayimgrc.5*
 %{bash_compdir}/swayimg
 %{zsh_compdir}/_swayimg
