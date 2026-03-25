@@ -13,8 +13,8 @@ BuildRequires:	exiv2-devel
 BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel >= 2
 BuildRequires:	giflib-devel
-BuildRequires:	libdrm-devel
 BuildRequires:	libavif-devel >= 1.0
+BuildRequires:	libdrm-devel
 BuildRequires:	libheif-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libjxl-devel
@@ -41,6 +41,7 @@ Requires:	OpenEXR >= 3.4
 Requires:	hicolor-icon-theme
 Requires:	libavif >= 1.0
 Requires:	librsvg >= 2.46
+ExclusiveArch:	%{ix86} %{x8664} %{arm} aarch64 mips mips64 mipsel ppc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
