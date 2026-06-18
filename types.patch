@@ -1,0 +1,11 @@
+--- swayimg-5.3/src/formats/xbm.cpp.orig	2026-06-16 12:09:37.000000000 +0200
++++ swayimg-5.3/src/formats/xbm.cpp	2026-06-19 01:35:21.095322264 +0200
+@@ -22,7 +22,7 @@
+         size_t height = 0;
+         std::stringstream ss(
+             std::string(reinterpret_cast<const char*>(data.data),
+-                        std::min(data.size, 512UL)));
++                        std::min(data.size, (size_t) 512)));
+         std::string line;
+         while ((width == 0 || height == 0) && std::getline(ss, line)) {
+             if (width == 0) {
