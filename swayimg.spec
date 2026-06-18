@@ -1,11 +1,11 @@
 Summary:	Image viewer for Wayland
 Name:		swayimg
-Version:	5.2
+Version:	5.3
 Release:	1
 License:	MIT
 Group:		Applications
 Source0:	https://github.com/artemsen/swayimg/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	1d5186aa1747cc842242e7fd85b310da
+# Source0-md5:	0cc279a07fc1c91ee0dc5f3d4d572ea5
 URL:		https://github.com/artemsen/swayimg
 BuildRequires:	OpenEXR-devel >= 3.4
 BuildRequires:	bash-completion-devel
@@ -28,6 +28,7 @@ BuildRequires:	libwebp-devel
 BuildRequires:	luajit-devel
 BuildRequires:	meson >= 1.1
 BuildRequires:	ninja
+BuildRequires:	openjpeg2-devel
 BuildRequires:	pkgconfig
 BuildRequires:	python3
 BuildRequires:	python3-modules
