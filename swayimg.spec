@@ -1,15 +1,20 @@
+%ifarch %{ix86} %{x8664} %{arm} aarch64 mips mips64 mipsel ppc
+%define		with_luajit  1
+%endif
+
 Summary:	Image viewer for Wayland
 Name:		swayimg
-Version:	5.5
+Version:	5.6
 Release:	1
 License:	MIT
 Group:		Applications
 Source0:	https://github.com/artemsen/swayimg/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	1961cdbbd1a259a5f96dd839b9627ada
+# Source0-md5:	bab84b5367955179a1224d2b9d1203af
 URL:		https://github.com/artemsen/swayimg
 BuildRequires:	OpenEXR-devel >= 3.4
 BuildRequires:	bash-completion-devel
 BuildRequires:	exiv2-devel
+BuildRequires:	ffmpeg-devel
 BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel >= 2
 BuildRequires:	giflib-devel
@@ -25,7 +30,8 @@ BuildRequires:	libsixel-devel
 BuildRequires:	libstdc++-devel >= 6:8
 BuildRequires:	libtiff-devel >= 4
 BuildRequires:	libwebp-devel
-BuildRequires:	luajit-devel
+%{!?with_luajit:BuildRequires:	lua-devel}
+%{?with_luajit:BuildRequires:	luajit-devel}
 BuildRequires:	meson >= 1.1
 BuildRequires:	ninja
 BuildRequires:	openjpeg2-devel
@@ -42,7 +48,6 @@ Requires:	OpenEXR >= 3.4
 Requires:	hicolor-icon-theme
 Requires:	libavif >= 1.0
 Requires:	librsvg >= 2.46
-ExclusiveArch:	%{ix86} %{x8664} %{arm} aarch64 mips mips64 mipsel ppc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -56,6 +61,7 @@ display servers.
 %meson \
 	-Ddoc=false \
 	-Dlicense=false \
+	-Dliblua=%{?with_luajit:luajit}%{!?with_luajit:lua} \
 	-Dversion=%{version} \
 	-Dzsh=enabled
 %meson_build
