@@ -3,6 +3,7 @@
 %endif
 
 Summary:	Image viewer for Wayland
+Summary(pl.UTF-8):	Przeglądarka obrazów dla środowiska Wayland
 Name:		swayimg
 Version:	5.6
 Release:	1
@@ -54,6 +55,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Fully customizable and lightweight image viewer for Wayland based
 display servers.
 
+%description -l pl.UTF-8
+W pełni konfigurowalna i lekka przeglądarka obrazów dla serwerów
+wyświetlania opartych na protokole Wayland.
+
 %prep
 %setup -q
 
@@ -64,10 +69,12 @@ display servers.
 	-Dliblua=%{?with_luajit:luajit}%{!?with_luajit:lua} \
 	-Dversion=%{version} \
 	-Dzsh=enabled
+
 %meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %meson_install
 
 %clean
