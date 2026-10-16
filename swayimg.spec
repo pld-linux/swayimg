@@ -6,7 +6,7 @@ Summary:	Image viewer for Wayland
 Summary(pl.UTF-8):	Przeglądarka obrazów dla środowiska Wayland
 Name:		swayimg
 Version:	5.6
-Release:	2
+Release:	3
 License:	MIT
 Group:		Applications
 Source0:	https://github.com/artemsen/swayimg/archive/v%{version}/%{name}-%{version}.tar.gz
