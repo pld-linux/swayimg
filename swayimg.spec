@@ -5,19 +5,19 @@
 Summary:	Image viewer for Wayland
 Summary(pl.UTF-8):	Przeglądarka obrazów dla środowiska Wayland
 Name:		swayimg
-Version:	5.6
-Release:	4
+Version:	5.7
+Release:	1
 License:	MIT
 Group:		Applications
 Source0:	https://github.com/artemsen/swayimg/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	bab84b5367955179a1224d2b9d1203af
+# Source0-md5:	61740783a191764da9331f667f86f858
 URL:		https://github.com/artemsen/swayimg
 BuildRequires:	OpenEXR-devel >= 3.4
 BuildRequires:	bash-completion-devel
 BuildRequires:	exiv2-devel
-BuildRequires:	ffmpeg-devel
+BuildRequires:	ffmpeg-devel >= 6
 BuildRequires:	fontconfig-devel
-BuildRequires:	freetype-devel >= 2
+BuildRequires:	freetype-devel >= 2.13.1
 BuildRequires:	giflib-devel
 BuildRequires:	libavif-devel >= 1.0
 BuildRequires:	libdrm-devel
@@ -34,6 +34,7 @@ BuildRequires:	libwebp-devel
 %{!?with_luajit:BuildRequires:	lua-devel}
 %{?with_luajit:BuildRequires:	luajit-devel}
 BuildRequires:	meson >= 1.1
+BuildRequires:	minizip-ng-devel
 BuildRequires:	ninja
 BuildRequires:	openjpeg2-devel
 BuildRequires:	pkgconfig
@@ -46,6 +47,7 @@ BuildRequires:	xorg-lib-libxkbcommon-devel
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	OpenEXR >= 3.4
+Requires:	freetype >= 2.13.1
 Requires:	hicolor-icon-theme
 Requires:	libavif >= 1.0
 Requires:	librsvg >= 2.46
